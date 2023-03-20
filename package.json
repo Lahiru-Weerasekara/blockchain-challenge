@@ -1,7 +1,7 @@
 {
-  "name": "theleague-coding-challenge",
+  "name": "coding-challenge",
   "version": "1.0.0",
-  "description": "The League Coding Challenge",
+  "description": "Coding Challenge",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --open",

@@ -1,4 +1,4 @@
-# The League Coding Challenge - Blockchain React Demo
+# Coding Challenge - Blockchain React Demo
 For this challenge we are making a block chain demo in react. If you don't know any react or typescript, there is no need to worry, some code has already been done for you which can serve as a good reference point, especially when writing tests in step 3. Part of this challenge is to test how well you pick up new technology and concepts.
 
 What is a block chain? *Blockchain is a system of recording information in a way that makes it difficult or impossible to change, hack, or cheat the system.*
@@ -10,7 +10,7 @@ However we also want to change it up a bit. We want a similar product using type
 Please create your own git repository to keep track of your work.
 For submission, just email the repository link back to us.
 
-If you have any issues, please email me at dylan@theleagueagency.com.au
+If you have any issues, please email me at dylan@autoleaguex.com.au
 
 Goodluck!
 

@@ -18,7 +18,7 @@ const BlockChain = () => {
    * onAdd should create a new block
    */
   const onAdd = () => {
-
+    setHashes(prev => [...prev, ''])
   }
 
   /**
@@ -27,7 +27,7 @@ const BlockChain = () => {
    * Should only need to pass to the last block
    */
   const onDelete = () => {
-    
+    setHashes((prev) => prev.slice(0, -1))
   }
 
   /**
@@ -36,7 +36,12 @@ const BlockChain = () => {
    * E.g., block 1 should update its corresponding index in the state 'hashes'
    */
   const onHash = (_block: number, hash: string) => {
-    setHashes([hash]);
+    setHashes((prev) => {
+      const newHashes = [...prev]
+      newHashes[_block-1] = hash;
+
+      return newHashes;
+    });
   }
 
   /**
@@ -49,8 +54,20 @@ const BlockChain = () => {
   return (
     <div className={styles.blockChain}>
       <h1>Block Chain Demo</h1>
-      <div>Total Blocks: 0</div>
-      <Block block={1} hash={hashes[0]} onHash={onHash} onDelete={onDelete}/>
+      <div>Total Blocks: {hashes.length}</div>
+      {
+        hashes.map((hash, index) => (
+          <Block 
+            key={index}
+            block={index + 1}
+            previousHash={index === 0 ? "0".repeat(64) : hashes[index - 1]}
+            hash={hash} 
+            onHash={onHash} 
+            onDelete={onDelete}
+            isLast={hashes.length === (index + 1)}
+          />
+        ))
+      }
       <button type="button" onClick={() => onAdd()}>Add Block</button>
     </div> 
   );

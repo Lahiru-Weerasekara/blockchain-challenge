@@ -9,6 +9,7 @@ interface Props {
   hash: string | undefined; // hash is undefined until set on initial render or hash updates via onHash
   onDelete?: () => void;
   onHash: (block: number, hash: string) => void;
+  isLast: boolean
 }
 
 /**
@@ -21,7 +22,7 @@ interface Props {
  * @param onDelete deletion of this block
  * @param onHash hash change callback
  */
-const Block = ({ block, previousHash = '0'.repeat(64), hash, onHash, onDelete }: Props) => {
+const Block = ({ block, previousHash = '0'.repeat(64), hash, onHash, onDelete, isLast }: Props) => {
   const [nonce, setNonce] = useState<number>(0);
   const [data, setData] = useState('');
 
@@ -62,7 +63,7 @@ const Block = ({ block, previousHash = '0'.repeat(64), hash, onHash, onDelete }:
         Valid Block <span>{hash && isValidHash(hash) ? "Valid" : "Not Valid"}</span>
       </div>
       <button type="button" onClick={() => onMine()}>Mine</button>
-      {onDelete && <button type="button" onClick={() => onDelete()}>Delete</button>}
+      { (isLast && onDelete) && <button type="button" onClick={() => onDelete()}>Delete</button>}
     </div>
   )
 };
